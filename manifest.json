@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Hide Tweets with Many Hashtags",
+  "version": "1.0",
+  "description": "Hides tweets containing more than a user-defined number of hashtags and specified bad words.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://twitter.com/*", "*://x.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon.png"
+    }
+  },
+  "icons": {
+    "48": "icon.png"
+  }
+}
