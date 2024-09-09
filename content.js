@@ -10,10 +10,12 @@ function hideTweets(hashtagLimit, badWords) {
     const tweetText = tweet.innerText.toLowerCase();
 
     const containsBadWord = badWords.some(word => tweetText.includes(word.toLowerCase()));
-    const handle = tweet.querySelector('div[data-testid="User-Name"] a[role="link"]');
+    const handle = tweet.querySelectorAll('div[data-testid="User-Name"] a[role="link"]')[0];
     const username = handle && handle.innerText;
-    const startsWithUnderscore = username && username.startsWith('_');
-    const endsWithUnderscore = username && username.endsWith('_');
+    const handleLink = tweet.querySelectorAll('div[data-testid="User-Name"] a[role="link"]')[1];
+    const handleName = handleLink && handleLink.innerText;
+    const startsWithUnderscore = handleName && handleName.startsWith('_');
+    const endsWithUnderscore = handleName && handleName.endsWith('_');
     let hasEmoji = handle && handle.querySelector('img');
     // const hasEmoji = handle && emojiRegex.test(handle.innerText);
     // if (hashtags.length >= hashtagLimit || containsBadWord || hasEmoji) {
